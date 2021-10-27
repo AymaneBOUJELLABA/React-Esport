@@ -13,8 +13,10 @@ function TeamsList()
         setLoading(true);
         const data = await fetchLeagues();
 
+
+        console.log(data.headers.get('x-total'));
         //si fetchLeague terminé
-        setList(data);
+        setList(data.json);
         setLoading(false);
     }
 

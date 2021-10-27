@@ -13,5 +13,5 @@ export const fetchLeagues = async () =>
     )
 
     const json = await response.json();
-    return json;
+    return { json:json, headers : response.headers };
 }
