@@ -1,13 +1,20 @@
+import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import './App.css';
-import TeamsList from './components/TeamsList';
+import LeaguesList from './components/LeaguesList';
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <TeamsList />
-      </header>
+       <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            E-Sport Leagues
+          </Typography>
+        </Toolbar>
+      </AppBar>
+
+      <LeaguesList />
     </div>
   );
 }
