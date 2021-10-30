@@ -1,20 +1,37 @@
-import { AppBar, Toolbar, Typography, Button } from '@mui/material';
 import './App.css';
-import LeaguesList from './components/LeaguesList';
+import AppHeader from './components/AppHeader';
+import LeaguesList from './components/Leagues/LeaguesList';
 
+
+import { Route, Switch } from 'react-router-dom'
+import NotFound from './components/NotFound';
+import LeagueDetails from './components/Leagues/LeagueDetails';
+import HomePage from './components/HomePage';
 
 function App() {
   return (
     <div className="App">
-       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            E-Sport Leagues
-          </Typography>
-        </Toolbar>
-      </AppBar>
-
-      <LeaguesList />
+      <div className="App-header">
+        <AppHeader />
+      </div>
+      
+      <div className="App-body">
+        <Switch>
+          <Route path="/leagues/:id">
+            <LeagueDetails/>
+          </Route>
+          <Route path="/leagues">
+            <LeaguesList />
+          </Route>
+          
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route path="*">
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 }

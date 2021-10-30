@@ -1,4 +1,28 @@
 .App {
   text-align: center;
   height: 100vh;
+  
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.App-header{
+  flex-grow: 2;
+}
+
+.App-body {
+  flex-grow: 3;
+  align-self: center;
+}
+
+.menu-link {
+  text-decoration: none;
+  color: #fff;
+}
+
+.menu-link:hover {
+  background-color: rgba(255, 255, 255, 0.699);
+  border-radius: 2px;
+  font-weight: bold;
 }

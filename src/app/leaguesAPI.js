@@ -38,3 +38,22 @@ export const fetchLeaguesWithPages = async (page=1,size=5) =>
     const json = await response.json();
     return {json: json, xtotal:response.headers.get('x-total')};
 }
+
+export const fetchLeaguebyId = async (id) =>
+{
+    const response = await fetch(
+        process.env.REACT_APP_LEAGUE_API+'/'+id,
+        {
+            mode : 'cors',
+            method : 'GET',
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : 'Bearer ' + process.env.REACT_APP_TOKEN
+            }
+        }
+    )
+
+    const json = await response.json();
+
+    return json;
+}
