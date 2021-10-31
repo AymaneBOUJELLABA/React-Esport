@@ -12,7 +12,7 @@ function AppHeader(props)
         padding: 0,
       };
     return( 
-        <AppBar position="static">
+        <AppBar position="fixed">
             <Toolbar>
                 <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                     E-Sport Leagues
