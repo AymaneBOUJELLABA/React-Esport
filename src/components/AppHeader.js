@@ -1,11 +1,12 @@
-import React from 'react';
-import { AppBar,Toolbar,Typography,List,ListItem} from '@mui/material';
+import React, { createContext } from 'react';
+import { AppBar,Toolbar,Typography,List,ListItem, InputLabel, MenuItem, Select, FormControl} from '@mui/material';
 import { Link,Route } from 'react-router-dom';
 import '../App.css';
+import GameSelect from './GameSelect';
+
 
 function AppHeader(props)
 {
-
     const flexContainer = {
         display: 'flex',
         flexDirection: 'row',
@@ -18,12 +19,16 @@ function AppHeader(props)
                     E-Sport Leagues
                 </Typography>
 
+                <GameSelect />
                 <List style={flexContainer} component="nav">
                     <ListItem>
                         <Link className="menu-link" to="/">Home</Link>
                     </ListItem>
                     <ListItem>
                         <Link className="menu-link" to="/leagues">Leagues</Link>
+                    </ListItem>
+                    <ListItem>
+                        <Link className="menu-link" to="/teams">Teams</Link>
                     </ListItem>
                 </List>
             </Toolbar>

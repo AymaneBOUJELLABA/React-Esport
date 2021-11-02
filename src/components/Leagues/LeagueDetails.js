@@ -34,15 +34,18 @@ function LeagueDetails(props)
 
     }else
     {
-        content =   <Card>
-                        <CardHeader title={"id : "+id}/>
-                        <CardMedia component="img"
-                                    height="230"
-                                    image={league.image_url}
-                                    alt={league.name + ' image'}
-                            />
+        content =   <Stack direction="row">
+                        <Card sx={{maxWidth:500}}>
+                            <CardHeader title={"id : "+id}/>
+                            <CardMedia component="img"
+                                        height="auto"
+                                        image={league.image_url}
+                                        alt={league.name + ' image'}
+                                />
+                        </Card>
+                        <Card>
                         <CardContent>
-                            <List component="dl">
+                            <List>
                             {Object.entries(league).map(([key,value]) => (
                                 <ListItem key={key}>
                                     {
@@ -55,9 +58,9 @@ function LeagueDetails(props)
                                                     <SeriesList series={value}/>
                                                 :
                                                 <Stack spacing={6} direction="row">
-                                                    <KeyValue pkey={"name"} value={value.name}/>
-                                                    <KeyValue pkey={"slug"} value={value.slug}/>
-                                                    <KeyValue pkey={"id"} value={value.id}/>
+                                                    <KeyValue class="object" pkey={"name"} value={value.name}/>
+                                                    <KeyValue class="object" pkey={"slug"} value={value.slug}/>
+                                                    <KeyValue class="object" pkey={"id"} value={value.id}/>
                                                 </Stack>
                                                 }
                                             </Stack>
@@ -81,7 +84,8 @@ function LeagueDetails(props)
                             ))}
                             </List>
                         </CardContent>
-                    </Card>
+                        </Card>
+                    </Stack>
     }
 
     return (

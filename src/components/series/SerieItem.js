@@ -1,17 +1,29 @@
-import { ListItem, Stack } from '@mui/material';
+import { ListItem, Stack, Typography, Button } from '@mui/material';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import KeyValue from '../KeyValue';
 
 function SerieItem(props)
 {
     const serie = props.serie;
+    const attributes = ["full_name","id","year"]
     return (
-        <Stack spacing="3">
+        <Stack>
             {Object.entries(serie).map(([key,value]) => (
-                (key=='full_name' || key=='id' || key=='year' )?
-                <KeyValue key={key} pkey={key} value={value} />
+                (attributes.includes(key))?
+                <KeyValue class="object" key={key} pkey={key} value={value} />
                 :
-                ''
+                    key=="winner_id" ? 
+                        <Stack >
+                            <Typography className={'object-key'} variant="body">Winner Team :</Typography>
+                            <Button component={Link} 
+                                    to={'/teams/'+value}
+                                    size="small" 
+                                    variant="contained">
+                                        Winner
+                            </Button>
+                        </Stack>
+                    : ''
             ))}
         </Stack>
     );

@@ -2,7 +2,7 @@ import { Avatar, CardMedia, Card, CardContent, Typography, Stack, Divider } from
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function LeagueItem(props)
+function TeamItem(props)
 {   
     return (
         <Stack direction="row">
@@ -19,10 +19,10 @@ function LeagueItem(props)
                         {props.name}
                     </Typography>
                 </CardContent>
-                <Link to={"/leagues/"+props.id} >Details</Link>
+                <Link to={"/teams/"+props.id} >Details</Link>
             </Card>
         </Stack>
     );
 }
 
-export default LeagueItem;
+export default TeamItem;

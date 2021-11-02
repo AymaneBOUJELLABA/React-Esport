@@ -1,13 +1,11 @@
 import { CircularProgress, Stack} from '@mui/material';
-import React, { useContext, useEffect, useState } from 'react';
-import { fetchLeaguesWithPages } from '../../app/leaguesAPI.js';
-import LeagueItem from './LeagueItem';
-
-import './leagues.css';
-import PagePagination from '../PagePagination.js';
+import React, { useEffect, useState, useContext } from 'react';
 import { VideoGameContext } from '../../App.js';
+import { fetchTeamsWithPages } from '../../app/teamsAPI.js';
+import PagePagination from '../PagePagination.js';
+import TeamItem from './TeamItem';
 
-function LeaguesList()
+function TeamsList()
 {   
     const [list, setList] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -16,20 +14,6 @@ function LeaguesList()
 
     const {currentGame} = useContext(VideoGameContext)
 
-    async function fetchData(page=1)
-    {
-        setLoading(true);
-        //const data = await fetchLeagues();
-        const dataPag = await fetchLeaguesWithPages(currentGame,page);
-
-        //définir le nombre total des éléments
-        setXTotal(Math.ceil(dataPag.xtotal/5));
-
-        //si fetchLeagues terminé
-        setList(dataPag.json);
-        setLoading(false);
-    }
-
     const handleChange = (event, value) =>
     {
         setPage(value);
@@ -37,7 +21,20 @@ function LeaguesList()
 
     useEffect(() =>
     {
-        fetchData(page);
+        async function fetchData()
+        {
+            setLoading(true);
+            //const data = await fetchTeams();
+            const dataPag = await fetchTeamsWithPages(currentGame,page);
+            //définir le nombre total des éléments
+            setXTotal(Math.ceil(dataPag.xtotal/5));
+
+            //si fetchTeams terminé
+            setList(dataPag.json);
+            setLoading(false);
+        }
+
+        fetchData();
     }, [page,currentGame])
 
 
@@ -52,13 +49,13 @@ function LeaguesList()
         content = <Stack spacing={2} sx={{display:'flex',alignItems: 'center'}}>
                     {
                         list.map((el) => (
-                            <LeagueItem key={el.id} id={el.id} name={el.name} img={el.image_url}/>
+                            <TeamItem key={el.id} id={el.id} name={el.name} img={el.image_url}/>
                         ))
                     }
                 </Stack>
     }
     return (
-            <div className="leagues-list">
+            <div className="teams-list">
                 {content}
                 <PagePagination xTotal={xTotal} page={page} handleChange={handleChange}/>
             </div>
@@ -66,4 +63,4 @@ function LeaguesList()
     );
 }
 
-export default LeaguesList;
+export default TeamsList;

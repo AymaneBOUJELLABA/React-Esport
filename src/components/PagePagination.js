@@ -1,9 +1,8 @@
 import React from 'react';
 import { Pagination, Stack } from "@mui/material";
 
-import './leagues.css'
 
-function LeaguePagination(props)
+function PagePagination(props)
 {
     return ( 
         <div className="pagination">
@@ -19,4 +18,4 @@ function LeaguePagination(props)
      );
 }
 
-export default LeaguePagination;
+export default PagePagination;

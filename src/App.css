@@ -8,11 +8,19 @@
 }
 
 .App-header{
+  flex-grow: 1;
 }
 
 .App-body {
   margin-top:5%;
   flex-grow: 2;
+}
+
+
+.pagination {
+  position: fixed;
+  background-color: rgba(218, 221, 233, 0.507);
+  bottom: 0;
 }
 
 .menu-link {
@@ -32,7 +40,7 @@
 
 }
 
-.object-detail-key {
+.object-key {
   color: #072e68;
   font-weight: bold;
 }

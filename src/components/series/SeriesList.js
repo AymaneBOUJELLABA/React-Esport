@@ -1,4 +1,4 @@
-import { List, ListItem, Typography, Stack } from '@mui/material';
+import { List, ListItem, Typography, Stack, Card } from '@mui/material';
 import React, { useState } from 'react';
 import KeyValue from '../KeyValue';
 import SerieItem from './SerieItem';
@@ -6,23 +6,19 @@ import SerieItem from './SerieItem';
 function SeriesList(props) 
 {
     const series = props.series;
+    console.log(series);
 
-    const flexContainer = {
-        display: 'flex',
-        flexDirection: 'row',
-        padding: 0,
-      };
     return (
-        <List style={flexContainer}>
+        <Stack direction="row" spacing={2}>
             {series.map((el,idx) => (
-            <ListItem key={idx}>
+            <Card sx={{minWidth:'120px'}} key={idx}>
                 <Stack spacing={2}>
                     <Typography variant="body" sx={{fontWeight:'bolder', color:'orange'}}>Serie {el.id} :</Typography>
                     <SerieItem serie={el} />
                 </Stack>
-            </ListItem>
+            </Card>
             ))}
-        </List>
+        </Stack>
     );
 }
 

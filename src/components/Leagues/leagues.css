@@ -5,7 +5,6 @@
     justify-content: center;
 }
 
-.pagination {
-    position: absolute;
-    bottom: 0;
+.MuiListItemText-root {
+    font-size: 5em;
 }

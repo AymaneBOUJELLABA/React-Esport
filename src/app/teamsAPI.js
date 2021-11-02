@@ -1,30 +1,11 @@
-export const fetchLeagues = async (game=1) =>
+export const fetchTeamsWithPages = async (game=1,page=1,size=5) =>
 {
-    const response = await fetch(
-        process.env.REACT_APP_API+'videogames/'+game+'/leagues',
-        {
-            mode : 'cors',
-            method : 'GET',
-            headers : {
-                'Content-Type' : 'application/json',
-                'Authorization' : 'Bearer ' + process.env.REACT_APP_TOKEN
-            }
-        }
-    )
-
-    const json = await response.json();
-    return { json:json, headers : response.headers };
-}
-
-export const fetchLeaguesWithPages = async (game=1,page=1,size=5) =>
-{
-    console.log('page : ' + page);
     //get total number of elements 
-    // number of pages are : 566 / 5 = 114
+    // number of pages are : 566 / 5 = 570
     // ?page[number] : pour spécifier le nombre de la page par exmple page 5
     // ?page[size] : pour spécifier le nombre d'éléments par page : exemple 5 éléments par page.
     const response = await fetch(
-        process.env.REACT_APP_API+'videogames/'+game+'/leagues/?sort=id&page[number]='+page+'&page[size]='+size,
+        process.env.REACT_APP_API+'teams?filter[videogame_id]='+game+'&sort=id&page[number]='+page+'&page[size]='+size,
         {
             mode : 'cors',
             method : 'GET',
@@ -39,10 +20,10 @@ export const fetchLeaguesWithPages = async (game=1,page=1,size=5) =>
     return {json: json, xtotal:response.headers.get('x-total')};
 }
 
-export const fetchLeaguebyId = async (game=1,id) =>
+export const fetchTeambyId = async (id) =>
 {
     const response = await fetch(
-        process.env.REACT_APP_API+'videogames/'+game+'/leagues/'+id,
+        process.env.REACT_APP_API+'teams/'+id,
         {
             mode : 'cors',
             method : 'GET',
