@@ -3,7 +3,6 @@ export const fetchVideoGames = async() =>
     const response = await fetch(
         process.env.REACT_APP_API+'videogames?sort=id',
         {
-            mode : 'no-cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
