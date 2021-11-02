@@ -3,7 +3,7 @@ export const fetchLeagues = async (game=1) =>
     const response = await fetch(
         process.env.REACT_APP_API+'videogames/'+game+'/leagues',
         {
-            mode :'no-cors',
+            mode :'cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
@@ -26,7 +26,7 @@ export const fetchLeaguesWithPages = async (game=1,page=1,size=5) =>
     const response = await fetch(
         process.env.REACT_APP_API+'videogames/'+game+'/leagues/?sort=id&page[number]='+page+'&page[size]='+size,
         {
-            mode :'no-cors',
+            mode :'cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
@@ -39,12 +39,12 @@ export const fetchLeaguesWithPages = async (game=1,page=1,size=5) =>
     return {json: json, xtotal:response.headers.get('x-total')};
 }
 
-export const fetchLeaguebyId = async (game=1,id) =>
+export const fetchLeaguebyId = async (id) =>
 {
     const response = await fetch(
-        process.env.REACT_APP_API+'videogames/'+game+'/leagues/'+id,
+        process.env.REACT_APP_API+'leagues/'+id,
         {
-            mode :'no-cors',
+            mode :'cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
