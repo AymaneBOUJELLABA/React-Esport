@@ -13,7 +13,6 @@ export default function GameSelect()
   {
     setLoading(true);
     const data = await fetchVideoGames();
-    console.log(data);
 
     setGames(data);
     setLoading(false);
