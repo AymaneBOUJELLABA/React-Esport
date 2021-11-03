@@ -13,7 +13,7 @@ function SerieItem(props)
                 (attributes.includes(key))?
                 <KeyValue class="object" key={key} pkey={key} value={value} />
                 :
-                    key=="winner_id" ? 
+                    key=="winner_id" && value!==null?
                         <Stack >
                             <Typography className={'object-key'} variant="body">Winner Team :</Typography>
                             <Button component={Link} 

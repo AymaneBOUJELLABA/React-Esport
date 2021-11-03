@@ -35,7 +35,7 @@ function LeagueDetails(props)
     }else
     {
         content =   <Stack direction="row">
-                        <Card sx={{maxWidth:500}}>
+                        <Card sx={{maxWidth:500, bgcolor:'#20c997'}}>
                             <CardHeader title={"id : "+id}/>
                             <CardMedia component="img"
                                         height="auto"
@@ -43,7 +43,7 @@ function LeagueDetails(props)
                                         alt={league.name + ' image'}
                                 />
                         </Card>
-                        <Card>
+                        <Card sx={{}}>
                         <CardContent>
                             <List>
                             {Object.entries(league).map(([key,value]) => (
