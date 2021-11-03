@@ -3,6 +3,7 @@ export const fetchLeagues = async (game=1) =>
     const response = await fetch(
         process.env.REACT_APP_API+'videogames/'+game+'/leagues',
         {
+
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
@@ -23,8 +24,9 @@ export const fetchLeaguesWithPages = async (game=1,page=1,size=5) =>
     // ?page[number] : pour spécifier le nombre de la page par exmple page 5
     // ?page[size] : pour spécifier le nombre d'éléments par page : exemple 5 éléments par page.
     const response = await fetch(
-        process.env.REACT_APP_API+'videogames/'+game+'/leagues/?sort=id&page[number]='+page+'&page[size]='+size,
+        process.env.REACT_APP_API+'leagues?filter[videogame_id]='+game+'&sort=id&page[number]='+page+'&page[size]='+size,
         {
+
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
@@ -42,6 +44,7 @@ export const fetchLeaguebyId = async (id) =>
     const response = await fetch(
         process.env.REACT_APP_API+'leagues/'+id,
         {
+
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
