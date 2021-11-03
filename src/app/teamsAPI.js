@@ -7,7 +7,7 @@ export const fetchTeamsWithPages = async (game=1,page=1,size=5) =>
     const response = await fetch(
         process.env.REACT_APP_API+'teams?filter[videogame_id]='+game+'&sort=id&page[number]='+page+'&page[size]='+size,
         {
-            mode :'cors',
+            mode :'no-cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
@@ -25,7 +25,7 @@ export const fetchTeambyId = async (id) =>
     const response = await fetch(
         process.env.REACT_APP_API+'teams/'+id,
         {
-            mode :'cors',
+            mode :'no-cors',
             method : 'GET',
             headers : {
                 'Content-Type' : 'application/json',
