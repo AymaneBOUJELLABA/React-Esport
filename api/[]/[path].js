@@ -9,7 +9,7 @@ export default (req, res) => {
     var apiToken = req.headers['authorization'];
     console.log({url, apiToken});
     if(!apiToken) {
-        apiToken = 'Bearer REPLACE_WITH_API_TOKEN';
+        apiToken = 'Bearer '+ process.env.REACT_APP_TOKEN;
     }
 
     /* request params */
